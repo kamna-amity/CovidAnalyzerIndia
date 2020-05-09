@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00695c</color>
+    <color name="colorAccent">#1de9b6</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGrey">#5E5E5E</color>
+    <color name="colorConfirmed">#ef5350</color>
+    <color name="colorActive">#42a5f5</color>
+    <color name="colorRecovered">#66bb6a</color>
+    <color name="colorDeceased">#9e9e9e</color>
+    <color name="colorConfirmedHighlight">#FFB3B2</color>
+    <color name="colorActiveHighlight">#A3D6FF</color>
+    <color name="colorRecoveredHighlight">#CDFFCF</color>
+    <color name="colorDeceasedHighlight">#E3E3E3</color>
+</resources>

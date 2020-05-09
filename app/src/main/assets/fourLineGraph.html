@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+<!--<div id="graphType">graphType</div>-->
+<!--<div id="graphLabel">graphLabel</div>-->
+<!--<div id="graphBackgroundColor">graphBackgroundColor</div>-->
+<!--<div id="graphBorderColor">graphBorderColor</div>-->
+<!--<div id="graphX">graphX</div>-->
+<!--<div id="graphY">graphY</div>-->
+<canvas id="myChart"></canvas>
+<script type="text/javascript">
+            function displayChart(graphType, graphLabel1, graphLabel2, graphLabel3, graphLabel4,
+            graphBackgroundColor1,graphBackgroundColor2,graphBackgroundColor3,graphBackgroundColor4,
+            graphBorderColor1, graphBorderColor2, graphBorderColor3, graphBorderColor4,
+            graphX,
+            graphY1,graphY2,graphY3,graphY4){
+
+                var graphXData = graphX.split(",");
+                var graphY1Data = graphY1.split(",").map((e)=>parseInt(e));
+                var graphY2Data = graphY2.split(",").map((e)=>parseInt(e));
+                var graphY3Data = graphY3.split(",").map((e)=>parseInt(e));
+                var graphY4Data = graphY4.split(",").map((e)=>parseInt(e));
+                //document.getElementById("graphType").innerHTML=graphType;
+                //document.getElementById("graphLabel").innerHTML=graphLabel;
+                //document.getElementById("graphBackgroundColor").innerHTML=graphBackgroundColor;
+                //document.getElementById("graphBorderColor").innerHTML=graphBorderColor;
+                //document.getElementById("graphX").innerHTML=graphXData;
+                //document.getElementById("graphY").innerHTML=graphYData;
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+
+                    type: graphType,
+
+                    data: {
+                        labels: graphXData,
+                        datasets: [{
+                            label: graphLabel1,
+                            backgroundColor: graphBackgroundColor1,
+                            borderColor: graphBorderColor1,
+                            data: graphY1Data,
+                            pointRadius: 0,
+                            fill: false,
+                            borderWidth: 2
+                        },
+                        {
+                            label: graphLabel2,
+                            backgroundColor: graphBackgroundColor2,
+                            borderColor: graphBorderColor2,
+                            data: graphY2Data,
+                            pointRadius: 0,
+                            fill: false,
+                            borderWidth: 2
+                        },
+                        {
+                            label: graphLabel3,
+                            backgroundColor: graphBackgroundColor3,
+                            borderColor: graphBorderColor3,
+                            data: graphY3Data,
+                            pointRadius: 0,
+                            fill: false,
+                            borderWidth: 2
+                        },
+                        {
+                            label: graphLabel4,
+                            backgroundColor: graphBackgroundColor4,
+                            borderColor: graphBorderColor4,
+                            data: graphY4Data,
+                            pointRadius: 0,
+                            fill: false,
+                            borderWidth: 2
+                        }]
+                    },
+
+                    options: {
+                        aspectRatio : 1.5
+                    }
+                });
+			}
+		</script>
+</body>
+</html>

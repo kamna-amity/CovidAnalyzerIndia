@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Covid Analyzer India</string>
+    <string name="overall_statistics">Overall Statistics</string>
+    <string name="state_factors">State factors</string>
+    <string name="statewise_comparison">Statewise Comparison</string>
+</resources>

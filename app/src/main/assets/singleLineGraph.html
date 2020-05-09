@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>-->
+</head>
+<body>
+<!--<div id="graphType">graphType</div>-->
+<!--<div id="graphLabel">graphLabel</div>-->
+<!--<div id="graphBackgroundColor">graphBackgroundColor</div>-->
+<!--<div id="graphBorderColor">graphBorderColor</div>-->
+<!--<div id="graphX">graphX</div>-->
+<!--<div id="graphY">graphY</div>-->
+<!--<div id="combinedArrayUnsorted">combinedArrayUnsorted</div>-->
+<!--<div id="combinedArraySorted">combinedArraySorted</div>-->
+<canvas id="myChart"></canvas>
+<script type="text/javascript">
+
+
+            function displayChart(graphType, graphLabel, graphBackgroundColor, graphBorderColor, graphX, graphY, aspectRatio){
+
+                var graphXDataUnsorted = graphX.split(",");
+                var graphYDataUnsorted = graphY.split(",").map((e)=>parseFloat(e));
+                var graphXData = [];
+                var graphYData = [];
+                var datalabel_plugin = {};
+                var datalabel_plugin_class = undefined;
+                if (graphType == 'horizontalBar') {
+                    combinedArrayUnsorted = graphXDataUnsorted.map(function(d, i) {
+                      return {
+                        label: d,
+                        data: graphYDataUnsorted[i] || 0
+                      };
+                    });
+
+                    combinedArraySorted = combinedArrayUnsorted.sort(function(a, b) {
+                      return b.data - a.data;
+                    });
+
+                    combinedArraySorted.forEach(function(d){
+                        if (d.data != -1){
+                            graphXData.push(d.label);
+                            graphYData.push(d.data);
+                        }
+                    });
+
+                }
+                else{
+                    graphXData = graphXDataUnsorted;
+                    graphYData = graphYDataUnsorted;
+                }
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: graphType,
+
+                    data: {
+                        labels: graphXData,
+                        datasets: [{
+                            label: graphLabel,
+                            backgroundColor: graphBackgroundColor,
+                            borderColor: graphBorderColor,
+                            data: graphYData,
+                            pointRadius: 0,
+                            fill: false,
+                            borderWidth: 2
+                        }]
+                    },
+
+                    options: {
+                        aspectRatio : aspectRatio
+                    }
+                });
+			}
+			function displayMessage(message){
+			    var graphdata = JSON.parse(message);
+			    document.getElementById("message").innerHTML=graphdata.name;
+			    //document.write(message);
+			}
+		</script>
+</body>
+</html>
