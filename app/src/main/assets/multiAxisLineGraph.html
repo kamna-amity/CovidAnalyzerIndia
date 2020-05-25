@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>-->
+</head>
+<body>
+<!--<div id="graphType">graphType</div>-->
+<!--<div id="graphLabel">graphLabel</div>-->
+<!--<div id="graphBackgroundColor">graphBackgroundColor</div>-->
+<!--<div id="graphBorderColor">graphBorderColor</div>-->
+<!--<div id="graphX">graphX</div>-->
+<!--<div id="graphY">graphY</div>-->
+<!--<div id="combinedArrayUnsorted">combinedArrayUnsorted</div>-->
+<!--<div id="combinedArraySorted">combinedArraySorted</div>-->
+<canvas id="myChart"></canvas>
+<script type="text/javascript">
+
+
+            function displayChart(graphType, graphLabel1, graphLabel2, graphBackgroundColor1, graphBackgroundColor2, graphBorderColor1,  graphBorderColor2, graphX, graphY1, graphY2, aspectRatio){
+
+                var graphXData = graphX.split(",");
+                var graphY1Data= graphY1.split(",").map((e)=>parseFloat(e));
+                var graphY2Data= graphY2.split(",").map((e)=>parseFloat(e));
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                window.myLine = Chart.Line(ctx, {
+
+                    data: {
+                        labels: graphXData,
+                        datasets: [{
+                            label: graphLabel1,
+                            borderColor: graphBorderColor1,
+                            backgroundColor: graphBackgroundColor1,
+                            fill: false,
+                            data: graphY1Data,
+                            pointRadius: 0,
+                            borderWidth: 2,
+                            steppedLine: 'middle',
+                            yAxisID: 'y-axis-1',
+                        }, {
+                            label: graphLabel2,
+                            borderColor: graphBorderColor2,
+                            backgroundColor: graphBackgroundColor2,
+                            fill: false,
+                            data: graphY2Data,
+                            pointRadius: 0,
+                            borderWidth: 2,
+                            steppedLine: 'middle',
+                            yAxisID: 'y-axis-2'
+                        }]
+                    },
+
+                    options: {
+                        aspectRatio : aspectRatio,
+                        stacked: false,
+                        scales: {
+                            yAxes: [{
+                                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                                display: true,
+                                position: 'left',
+                                 ticks: {
+                                    fontSize: 6
+                                  },
+                                id: 'y-axis-1',
+                            }, {
+                                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                                display: true,
+                                position: 'right',
+                                id: 'y-axis-2',
+                                 ticks: {
+                                    fontSize: 6
+                                  },
+
+                                // grid line settings
+                                gridLines: {
+                                    drawOnChartArea: false, // only want the grid lines for one axis to show up
+                                },
+                            }],
+                            xAxes: [{
+                              ticks: {
+                                autoSkip: false,
+                                fontSize: 7
+                              }
+                            }]
+                        }
+                    }
+                });
+			}
+			function displayMessage(message){
+			    var graphdata = JSON.parse(message);
+			    document.getElementById("message").innerHTML=graphdata.name;
+			    //document.write(message);
+			}
+		</script>
+</body>
+</html>

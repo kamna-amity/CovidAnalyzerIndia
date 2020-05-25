@@ -13,10 +13,14 @@
 
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Recovered Cases Graph" />
+        android:text="Daily Deceased Cases Graph"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"/>
 
 
     <WebView
@@ -24,6 +28,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Graph Analysis"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description_placeholder"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"/>
 
 </LinearLayout>
 </ScrollView>

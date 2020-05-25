@@ -17,10 +17,14 @@
 
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="All in One Graph" />
+        android:text="Daily Count Graph"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"/>
 
 
     <WebView
@@ -29,11 +33,52 @@
         android:layout_height="wrap_content"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Graph Analysis"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/daily_count_graph_analysis"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cumulative Count Graph"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"/>
     <WebView
         android:id="@+id/allInOneTotalCasesWebView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Graph Analysis"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cumulative_count_graph_analysis"
+        android:textStyle="normal"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"/>
 
 </LinearLayout>
 </ScrollView>

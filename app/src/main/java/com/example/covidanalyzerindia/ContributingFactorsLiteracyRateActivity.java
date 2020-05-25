@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.covidanalyzerindia.util.CovidDataService;
 import com.example.covidanalyzerindia.util.JavaScriptFunctionService;
+import com.example.covidanalyzerindia.util.StateInformationService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,21 +28,29 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 import static com.example.covidanalyzerindia.util.ApplicationConstants.CONFIRMED_COLOR;
+import static com.example.covidanalyzerindia.util.ApplicationConstants.CONTRIBUTING_FACTOR_COLOR;
+import static com.example.covidanalyzerindia.util.ApplicationConstants.DECEASED_COLOR;
+import static com.example.covidanalyzerindia.util.ApplicationConstants.RECOVERED_COLOR;
 
-public class ConfirmedCasesActivity extends AppCompatActivity {
+public class ContributingFactorsLiteracyRateActivity extends AppCompatActivity {
 
-    private static final String LOCAL_RESOURCE = "file:///android_asset/singleLineGraph.html";
+    private static final String LOCAL_RESOURCE = "file:///android_asset/multiAxisLineGraph.html";
     private static final String GRAPH_TYPE = "line";
-    private static final String GRAPH_LABEL = "Number of Confirmed Cases";
-    private static final String GRAPH_BACKGROUND_COLOR = CONFIRMED_COLOR;
-    private static final String GRAPH_BORDER_COLOR = CONFIRMED_COLOR;
+    private static final String GRAPH_LABEL = "Literacy Rate";
+    private static final String GRAPH_LABEL_DEATH_RATE = "# Death Rate";
+    private static final String GRAPH_BACKGROUND_COLOR_DECEASED = DECEASED_COLOR;
+    private static final String GRAPH_BORDER_COLOR_DECEASED = DECEASED_COLOR;
+    private static final String GRAPH_LABEL_RECOVERY_RATE = "# Recovery Rate";
+    private static final String GRAPH_BACKGROUND_COLOR_RECOVERED = RECOVERED_COLOR;
+    private static final String GRAPH_BORDER_COLOR_RECOVERED = RECOVERED_COLOR;
+    private static final String GRAPH_BACKGROUND_COLOR_FACTOR = CONTRIBUTING_FACTOR_COLOR;
+    private static final String GRAPH_BORDER_COLOR__FACTOR = CONTRIBUTING_FACTOR_COLOR;
     private static final String GRAPH_ASPECT_RATIO = "1.5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirmed_cases);
+        setContentView(R.layout.activity_contributing_factors_literacy_rate);
         if (getSupportActionBar() != null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,10 +70,9 @@ public class ConfirmedCasesActivity extends AppCompatActivity {
         return true;
     }
 
-
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {
 
-        private final String TAG = AsyncCovidDataApiTask.class.getSimpleName();
+        private final String TAG = ContributingFactorsLiteracyRateActivity.AsyncCovidDataApiTask.class.getSimpleName();
 
         @Override
         protected void onPreExecute() {
@@ -111,19 +119,34 @@ public class ConfirmedCasesActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(CovidDataService covidDataService) {
             super.onPostExecute(covidDataService);
+            StateInformationService stateInformationService = new StateInformationService(ContributingFactorsLiteracyRateActivity.this);
 
             if (covidDataService != null) {
                 try {
-                    final String graphX = covidDataService.getCaseTimeSeriesDatesString();
-                    final String graphY = covidDataService.getCaseTimeSeriesDailyConfirmedCasesString();
+                    final String graphX = covidDataService.getStatesForContributingFactorsString();
+                    final String graphY1 = covidDataService.getStateWiseDeathRateString();
+                    final String graphY2 = stateInformationService.getLiteracyRateDataString(graphX);// change here for pollution
 
-                    WebView myWebView = findViewById(R.id.confirmedCasesWebView);
+                    WebView myWebView = findViewById(R.id.confirmedCasesLiteracyRateWebView);
                     myWebView.getSettings().setJavaScriptEnabled(true);
                     myWebView.loadUrl(LOCAL_RESOURCE);
                     myWebView.setWebViewClient(new WebViewClient() {
                         public void onPageFinished(WebView view, String url) {
                             JavaScriptFunctionService javaScriptFunctionService = new JavaScriptFunctionService();
-                            String javaScriptFunctionCall = javaScriptFunctionService.getJavaScriptFunctionCall(GRAPH_TYPE,GRAPH_LABEL,GRAPH_BACKGROUND_COLOR,GRAPH_BORDER_COLOR,graphX,graphY,GRAPH_ASPECT_RATIO);
+                            String javaScriptFunctionCall = javaScriptFunctionService.getJavaScriptFunctionCall(GRAPH_TYPE,GRAPH_LABEL_DEATH_RATE,GRAPH_LABEL,GRAPH_BACKGROUND_COLOR_DECEASED,GRAPH_BACKGROUND_COLOR_FACTOR,GRAPH_BORDER_COLOR_DECEASED,GRAPH_BORDER_COLOR__FACTOR,graphX,graphY1,graphY2,GRAPH_ASPECT_RATIO);
+                            view.loadUrl(javaScriptFunctionCall);
+                        }
+                    });
+
+                    // Recovered Cases
+                    final String graphY3 = covidDataService.getStateWiseRecoveryRateString();
+                    WebView myWebView2 = findViewById(R.id.recoveredCasesLiteracyRateWebView);
+                    myWebView2.getSettings().setJavaScriptEnabled(true);
+                    myWebView2.loadUrl(LOCAL_RESOURCE);
+                    myWebView2.setWebViewClient(new WebViewClient() {
+                        public void onPageFinished(WebView view, String url) {
+                            JavaScriptFunctionService javaScriptFunctionService = new JavaScriptFunctionService();
+                            String javaScriptFunctionCall = javaScriptFunctionService.getJavaScriptFunctionCall(GRAPH_TYPE,GRAPH_LABEL_RECOVERY_RATE,GRAPH_LABEL,GRAPH_BACKGROUND_COLOR_RECOVERED,GRAPH_BACKGROUND_COLOR_FACTOR,GRAPH_BORDER_COLOR_RECOVERED,GRAPH_BORDER_COLOR__FACTOR,graphX,graphY3,graphY2,GRAPH_ASPECT_RATIO);
                             view.loadUrl(javaScriptFunctionCall);
                         }
                     });
@@ -159,6 +182,4 @@ public class ConfirmedCasesActivity extends AppCompatActivity {
 
 
     }
-
-
 }

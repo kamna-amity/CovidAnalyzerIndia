@@ -49,6 +49,10 @@ public class AllInOneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_in_one);
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         try {
             new AllInOneActivity.AsyncCovidDataApiTask().execute(CovidDataService.COVID_DATA_RESOURCE);
@@ -56,6 +60,12 @@ public class AllInOneActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Sorry! Couldn't get data from the server.",Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {

@@ -32,7 +32,7 @@ public class ActiveCasesActivity extends AppCompatActivity {
 
     private static final String LOCAL_RESOURCE = "file:///android_asset/singleLineGraph.html";
     private static final String GRAPH_TYPE = "line";
-    private static final String GRAPH_LABEL = "Number of Active Cases";
+    private static final String GRAPH_LABEL = "Number` of Active Cases";
     private static final String GRAPH_BACKGROUND_COLOR = ACTIVE_COLOR;
     private static final String GRAPH_BORDER_COLOR = ACTIVE_COLOR;
     private static final String GRAPH_ASPECT_RATIO = "1.5";
@@ -41,6 +41,10 @@ public class ActiveCasesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_cases);
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         try {
             new AsyncCovidDataApiTask().execute(CovidDataService.COVID_DATA_RESOURCE);
@@ -48,6 +52,12 @@ public class ActiveCasesActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Sorry! Couldn't get data from the server.",Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {

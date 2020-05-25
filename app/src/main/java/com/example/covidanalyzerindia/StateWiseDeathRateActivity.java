@@ -43,12 +43,23 @@ public class StateWiseDeathRateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_state_wise_death_rate);
 
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         try {
             new AsyncCovidDataApiTask().execute(CovidDataService.COVID_DATA_RESOURCE);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Sorry! Couldn't get data from the server.",Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {

@@ -14,19 +14,19 @@
     android:weightSum="10"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Home Page"
-        android:gravity="center_horizontal"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="center"-->
+<!--        android:text="Home Page"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        />-->
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:textSize="20sp"
-        android:text="@string/overall_statistics"
+        android:text="Overall Cases"
         android:textColor="@color/colorGrey"
         android:drawableLeft="@drawable/ic_show_chart_black_48dp"
         android:drawableTint="@color/colorPrimary"
@@ -36,22 +36,22 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:textSize="20sp"
-        android:text="@string/state_factors"
-        android:textColor="@color/colorGrey"
-        android:drawableLeft="@drawable/ic_insert_chart_black_48dp"
-        android:drawableTint="@color/colorPrimary"
-        android:backgroundTint="@color/colorWhite"
-        android:onClick="startIndiaStatisticsActivity"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:textSize="20sp"
-        android:text="@string/statewise_comparison"
+        android:text="Statewise comparison"
         android:textColor="@color/colorGrey"
         android:drawableLeft="@drawable/ic_insert_chart_black_48dp"
         android:drawableTint="@color/colorPrimary"
         android:backgroundTint="@color/colorWhite"
         android:onClick="startStateComparisonActivity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="20sp"
+        android:text="Contributing factors"
+        android:textColor="@color/colorGrey"
+        android:drawableLeft="@drawable/ic_multiline_chart_black_48dp"
+        android:drawableTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorWhite"
+        android:onClick="startContributingFactorsActivity"/>
 
 </LinearLayout>
 </ScrollView>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorWhite">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite">
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Pollution"
+            android:textSize="20sp"
+            android:textColor="@color/colorGrey"
+            android:drawableLeft="@drawable/ic_local_car_wash_black_48dp"
+            android:drawableTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorWhite"
+            android:onClick="startPollutionActivity"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Population"
+            android:textSize="20sp"
+            android:textColor="@color/colorGrey"
+            android:drawableLeft="@drawable/ic_group_black_48dp"
+            android:drawableTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorWhite"
+            android:onClick="startPopulationActivity"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Literacy Rate"
+            android:textSize="20sp"
+            android:textColor="@color/colorGrey"
+            android:drawableLeft="@drawable/ic_import_contacts_black_48dp"
+            android:drawableTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorWhite"
+            android:onClick="startLiteracyRateActivity"/>
+
+    </LinearLayout>
+</ScrollView>

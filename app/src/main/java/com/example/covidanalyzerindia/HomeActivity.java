@@ -41,4 +41,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StateComparisonActivity.class);
         startActivity(intent);
     }
+
+    public void startContributingFactorsActivity(View view) {
+        Intent intent = new Intent(this, ContributingFactorsActivity.class);
+        startActivity(intent);
+    }
 }

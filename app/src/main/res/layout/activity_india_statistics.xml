@@ -14,14 +14,6 @@
     android:weightSum="10"
     tools:context=".IndiaStatisticsActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="India Stats Page"
-        android:gravity="center_horizontal"
-        />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -35,7 +27,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="All in One"
+        android:text="All in One Graph"
         android:textColor="@color/colorGrey"
         android:drawableLeft="@drawable/ic_show_chart_black_48dp"
         android:drawableTint="@color/colorPrimary"

@@ -41,6 +41,10 @@ public class DeceasedCasesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deceased_cases);
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         try {
             new AsyncCovidDataApiTask().execute(CovidDataService.COVID_DATA_RESOURCE);
@@ -48,6 +52,12 @@ public class DeceasedCasesActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(),"Sorry! Couldn't get data from the server.",Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {

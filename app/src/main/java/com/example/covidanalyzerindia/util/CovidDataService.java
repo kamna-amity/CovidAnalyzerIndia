@@ -91,6 +91,9 @@ public class CovidDataService implements Serializable {
     public String getStateWiseDeathRateString() throws JSONException {
         return convertToString(this.getStateWiseRateOf("deaths").subList(STATE_DATA_START_POSITION,stateWise.length()));
     }
+    public String getStatesForContributingFactorsString() throws JSONException {
+        return convertToString(this.getStatesForContributingFactors().subList(STATE_DATA_START_POSITION,stateWise.length()-2));
+    }
 
     private List<String> getCaseTimeSeriesDates() throws JSONException {
         ArrayList<String> caseTimeSeriesDates = new ArrayList<>();
@@ -150,6 +153,13 @@ public class CovidDataService implements Serializable {
         return states;
     }
 
+    private List<String> getStatesForContributingFactors() throws JSONException {
+        List<String> states = getStates();
+        states.remove("State Unassigned");
+        states.remove("Lakshadweep"); // Recovery rate was -1
+        return states;
+    }
+
     private List<String> getStateWiseCasesOf(String property) throws JSONException {
         ArrayList<String> stateWiseCases = new ArrayList<>();
         for (int i=0; i<stateWise.length(); i++){
@@ -200,28 +210,6 @@ public class CovidDataService implements Serializable {
             stateCaseCount.add(stateName+","+confirmedCases+","+activeCases+","+recoveredCases+","+deceasedCases);
         }
         return stateCaseCount;
-    }
-
-    private HashMap<String,StateInformation> getStateInformation() throws JSONException {
-        HashMap<String,StateInformation> stringStateInformationHashMap = new HashMap<>();
-        for (int i=0; i<stateWise.length(); i++){
-            JSONObject stateWiseJson = (JSONObject) stateWise.get(i);
-            StateInformation stateInformation = new StateInformation(
-                    stateWiseJson.getString("state"),
-                    stateWiseJson.getString("statecode"),
-                    stateWiseJson.getString("stateNotes"),
-                    stateWiseJson.getInt("confirmed"),
-                    stateWiseJson.getInt("active"),
-                    stateWiseJson.getInt("recovered"),
-                    stateWiseJson.getInt("deaths"),
-                    stateWiseJson.getInt("deltaconfirmed"),
-                    stateWiseJson.getInt("deltarecovered"),
-                    stateWiseJson.getInt("deltadeaths"),
-                    stateWiseJson.getString("lastupdatedtime")
-            );
-            stringStateInformationHashMap.put(stateWiseJson.getString("state"),stateInformation);
-        }
-        return stringStateInformationHashMap;
     }
 
     private String convertToString(List<String> list){

@@ -1,6 +1,30 @@
 <resources>
     <string name="app_name">Covid Analyzer India</string>
-    <string name="overall_statistics">Overall Statistics</string>
-    <string name="state_factors">State factors</string>
-    <string name="statewise_comparison">Statewise Comparison</string>
+    <string name="daily_count_graph_analysis">
+        Daily Count Graph Analysis will go here
+        Daily Count Graph Analysis will go here
+        Daily Count Graph Analysis will go here
+        Daily Count Graph Analysis will go here
+        Daily Count Graph Analysis will go here
+        Daily Count Graph Analysis will go here
+        Daily Count Graph Analysis will go here
+    </string>
+    <string name="cumulative_count_graph_analysis">
+        Cumulative Count Graph Analysis will go here
+        Cumulative Count Graph Analysis will go here
+        Cumulative Count Graph Analysis will go here
+        Cumulative Count Graph Analysis will go here
+        Cumulative Count Graph Analysis will go here
+        Cumulative Count Graph Analysis will go here
+        Cumulative Count Graph Analysis will go here
+    </string>
+    <string name="description_placeholder">
+        Graph description and analysis will go here
+        Graph description and analysis will go here
+        Graph description and analysis will go here
+        Graph description and analysis will go here
+        Graph description and analysis will go here
+        Graph description and analysis will go here
+        Graph description and analysis will go here
+    </string>
 </resources>

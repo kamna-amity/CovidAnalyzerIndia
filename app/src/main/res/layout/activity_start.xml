@@ -14,9 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
-        android:src="@drawable/ic_android_black_96dp"
+        android:src="@drawable/ic_insert_chart_black_48dp"
         android:tint="@color/colorPrimary"
-        android:padding="80dp"
+        android:paddingTop="80dp"
+        android:paddingRight="80dp"
+        android:paddingLeft="80dp"
         />
 
     <TextView
@@ -27,7 +29,8 @@
         android:gravity="center_horizontal"
         android:text="Covid 19 Analysis - India"
         android:textAlignment="center"
-        android:textSize="20sp"/>
+        android:textSize="30sp"/>
+
 
     <Button
         android:layout_weight="1"

@@ -12,21 +12,61 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OverallCasesActivity"></activity>
-        <activity android:name=".StateWiseDeathRateActivity" />
-        <activity android:name=".StateWiseRecoveryRateActivity" />
-        <activity android:name=".StateWiseRecoveredCasesActivity" />
-        <activity android:name=".StateWiseDeceasedCasesActivity" />
-        <activity android:name=".StateWiseActiveCasesActivity" />
-        <activity android:name=".StateWiseConfirmedCasesActivity" />
-        <activity android:name=".StateComparisonActivity" />
-        <activity android:name=".AllInOneActivity" />
-        <activity android:name=".DeceasedCasesActivity" />
-        <activity android:name=".RecoveredCasesActivity" />
-        <activity android:name=".ActiveCasesActivity" />
-        <activity android:name=".ConfirmedCasesActivity" />
-        <activity android:name=".IndiaStatisticsActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".ContributingFactorsLiteracyRateActivity"></activity>
+        <activity android:name=".ContributingFactorsPopulationActivity" />
+        <activity android:name=".ContributingFactorsPollutionActivity" />
+        <activity
+            android:name=".ContributingFactorsActivity"
+            android:label="Contributing Factors" />
+        <activity
+            android:name=".OverallCasesActivity"
+            android:label="Overall Cases" />
+        <activity
+            android:name=".StateWiseDeathRateActivity"
+            android:label="Death Rate" />
+        <activity
+            android:name=".StateWiseRecoveryRateActivity"
+            android:label="Recovery Rate" />
+        <activity
+            android:name=".StateWiseRecoveredCasesActivity"
+            android:label="Recovered Cases" />
+        <activity
+            android:name=".StateWiseDeceasedCasesActivity"
+            android:label="Deceased Cases" />
+        <activity
+            android:name=".StateWiseActiveCasesActivity"
+            android:label="Active Cases" />
+        <activity
+            android:name=".StateWiseConfirmedCasesActivity"
+            android:label="Confirmed Cases" />
+        <activity
+            android:name=".StateComparisonActivity"
+            android:label="State Comparison" />
+        <activity
+            android:name=".AllInOneActivity"
+            android:label="All Cases" />
+        <activity
+            android:name=".DeceasedCasesActivity"
+            android:label="Deceased Cases" />
+        <activity
+            android:name=".RecoveredCasesActivity"
+            android:label="Recovered Cases" />
+        <activity
+            android:name=".ActiveCasesActivity"
+            android:label="Active Cases" />
+        <activity
+            android:name=".ConfirmedCasesActivity"
+            android:label="Confirmed Cases" />
+        <activity
+            android:name=".IndiaStatisticsActivity"
+            android:label="India Statistics">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.covidanalyzerindia.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="Covid Analyzer India" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -42,6 +42,10 @@ public class OverallCasesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overall_cases);
+        if (getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         try {
             new AsyncCovidDataApiTask().execute(CovidDataService.COVID_DATA_RESOURCE);
@@ -50,19 +54,12 @@ public class OverallCasesActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Sorry! Couldn't get data from the server.",Toast.LENGTH_LONG).show();
         }
 
-//        TableLayout tableLayout = findViewById(R.id.caseCountTable);
-//        TableRow tableRow = new TableRow(this);
-//        tableRow.setLayoutParams(new TableRow.LayoutParams( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-//        tableRow.setBackgroundColor(Color.GRAY);
-//
-//        TextView textview = new TextView(this);
-//        textview.setLayoutParams(new TableRow.LayoutParams( LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-//        textview.setText("Hello");
-//        textview.setTextColor(Color.BLACK);
-//        textview.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-//        tableRow.addView(textview);
-//
-//        tableLayout.addView(tableRow, new TableLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {
@@ -120,8 +117,19 @@ public class OverallCasesActivity extends AppCompatActivity {
             if (covidDataService != null) {
                 try {
                     final List<String> stateCaseCount = covidDataService.getStateCaseCount();
+                    // Fill the total cases here first
+                    String[] totalCountData = stateCaseCount.get(0).split(",");
 
-                    for (int i = 0; i < stateCaseCount.size(); i++) {
+                    TextView confirmedCountTextView = findViewById(R.id.confirmedCountTextView);
+                    confirmedCountTextView.setText(totalCountData[1]);
+                    TextView activeCountTextView = findViewById(R.id.activeCountTextView);
+                    activeCountTextView.setText(totalCountData[2]);
+                    TextView recoveredCountTextView = findViewById(R.id.recoveredCountTextView);
+                    recoveredCountTextView.setText(totalCountData[3]);
+                    TextView deceasedCountTextView = findViewById(R.id.deceasedCountTextView);
+                    deceasedCountTextView.setText(totalCountData[4]);
+
+                    for (int i = 1; i < stateCaseCount.size(); i++) {
 
                         String[] stateData = stateCaseCount.get(i).split(",");
                         TableRow tableRow = new TableRow(OverallCasesActivity.this);
