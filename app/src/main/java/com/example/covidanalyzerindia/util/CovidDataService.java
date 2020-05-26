@@ -92,7 +92,7 @@ public class CovidDataService implements Serializable {
         return convertToString(this.getStateWiseRateOf("deaths").subList(STATE_DATA_START_POSITION,stateWise.length()));
     }
     public String getStatesForContributingFactorsString() throws JSONException {
-        return convertToString(this.getStatesForContributingFactors().subList(STATE_DATA_START_POSITION,stateWise.length()-2));
+        return convertToString(this.getStatesForContributingFactors().subList(STATE_DATA_START_POSITION,stateWise.length()-3)); // -3 because we have removed 3 items
     }
 
     private List<String> getCaseTimeSeriesDates() throws JSONException {
@@ -155,8 +155,9 @@ public class CovidDataService implements Serializable {
 
     private List<String> getStatesForContributingFactors() throws JSONException {
         List<String> states = getStates();
-        states.remove("State Unassigned");
+        states.remove("State Unassigned"); // not useful data coming from Covid API
         states.remove("Lakshadweep"); // Recovery rate was -1
+        states.remove("Ladakh"); // There is no data for Ladakh as it got separated recently
         return states;
     }
 

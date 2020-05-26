@@ -1,23 +1,62 @@
 <resources>
     <string name="app_name">Covid Analyzer India</string>
     <string name="daily_count_graph_analysis">
-        Daily Count Graph Analysis will go here
-        Daily Count Graph Analysis will go here
-        Daily Count Graph Analysis will go here
-        Daily Count Graph Analysis will go here
-        Daily Count Graph Analysis will go here
-        Daily Count Graph Analysis will go here
-        Daily Count Graph Analysis will go here
+        In the graph, we can see near 14th May, the recovered cases line and the active cases line cross each other which implies that the recovered cases were equal to or more than 50% of the confirmed cases on that particular day.
+Also, the point to be observed here is that earlier the active cases line was following the confirmed cases line but now the recovered cases line has got separated from the same and began to cross with the recovered cases line. This infers that the situation of the country has started to improve.
     </string>
     <string name="cumulative_count_graph_analysis">
-        Cumulative Count Graph Analysis will go here
-        Cumulative Count Graph Analysis will go here
-        Cumulative Count Graph Analysis will go here
-        Cumulative Count Graph Analysis will go here
-        Cumulative Count Graph Analysis will go here
-        Cumulative Count Graph Analysis will go here
-        Cumulative Count Graph Analysis will go here
+        The graph suggests that earlier the number of active cases was almost following the number of confirmed cases. But as the recovery rate increased, the number of active cases began to move away from the number of confirmed cases and started to come closer to the number of recovered cases. Also, the lines representing the number of active cases and recovered cases will cross each other soon. This indeed results in the observation that the situation of the country is improving.
     </string>
+
+    <string name="confirmed_cases">This graph shows that the number of confirmed cases began to rise from the month of April. And by the end of April, the cases began to steeply increase resulting in the number crossing the 1,00,000 mark.
+    </string>
+    <string name="active_cases">The graph shows that the active cases began to increase suddenly by the end of the month of March. Since then, the number of active cases is continuing to increase rapidly.
+At the beginning of the month of May, the cases suffered a steep rise in them. But the graph also shows that during mid-May, the cases had a steep decline also resulting in the improvement of the situation.
+After that, the cases are continuing to increase in a huge number daily.
+</string>
+    <string name="recovered_cases">The graph shows that the recovery rate of India started to increase from 9 April and is continuing to increase since then.
+Also, the recovery rate showed a huge spike during mid-May hence increasing the overall recovery rate of the country.
+</string>
+    <string name="deceased_cases">The graph shows that the deaths in India started to increase since the starting of the April month and are continuing to increase. Something needs to be done to reduce the number of deaths in the country.</string>
+
+    <string name="statewise_confirmed_cases">The top states having the highest number of confirmed cases are Maharashtra, Tamil Nadu, Gujarat and, Delhi.
+But, Maharashtra on the topmost position has almost 3 times more cases than the other states in the top which indicates the much rapid spread of the virus in the state.
+</string>
+    <string name="statewise_active_cases">The graph shows  that the highest number of active cases are in Maharashtra, Tamil Nadu, Gujarat, and Delhi. But again, Maharashtra has almost 4 times active cases than the other top states.</string>
+    <string name="statewise_recovered_cases">In the recovery cases graph, Maharashtra is on the top with the highest number of recovered cases followed by Tamil Nadu, Delhi,  and Gujarat.
+The recovered cases have also reached high numbers thereby improving the situation of the country.
+</string>
+    <string name="statewise_deceased_cases">In the deceased cases, the scenario is something different. The top states are Maharashtra, Gujarat, Madhya Pradesh and West Bengal which indicates the higher mortality rate in Madhya pradesh and West Bengal.</string>
+    <string name="statewise_recovery_rate">The top states with highest recovery rate as shown by the graph are Andaman Nicobar, Mizoram, Arunachal Pradesh and Punjab.
+Andaman Nicobar and Arunachal Pradesh dont have any single active case which indicates the full recovery rate.</string>
+    <string name="statewise_death_rate">The top states in the death rate graph are West Bengal, Meghalaya, Gujarat, and Madhya Pradesh.
+West Bengal on top has a death rate of 7% of its confirmed cases.</string>
+
+    <string name="cf_recovery_rate_pollution">The top states in the recovery rate graph were Andaman Nicobar (AQI-30), Mizoram  (AQI-25), Punjab (AQI-48), Tripura  (AQI-22), and Ladakh (AQI-25).  This shows us that lower the AQI level, higher the recovery rate.
+Also, the states with low recovery rate are Bihar (AQI-130), Himachal Pradesh (AQI-94), Chattisgarh (AQI-132) , Uttarakhand (AQI-140), Assam (AQI-88). This shows us that the states with high pollution levels have low recovery rates.
+From this, we can clearly infer that the recovery rate of the Covid-19 cases depends on the pollution level of the state.</string>
+    <string name="cf_death_rate_pollution">The top states in the death rate graph are West Bengal (AQI-231), Meghalaya (AQI-75), Gujarat (AQI-65), Madhya Pradesh (AQI-59), and Maharashtra (AQI-100). This does not show any particular pattern between the death rate and pollution level. Hence, we can say that the death rate does not depend on the pollution level.</string>
+    <string name="cf_confirmed_cases_population">The states having the highest number of confirmed cases are Maharashtra (PD- 365), Gujarat (PD- 308), Tamil Nadu (PD- 555), and Delhi (PD- 11297).
+Also, the states with the lowest number of confirmed cases are Chattisgarh (PD- 189), Chandigarh (PD- 9212), Himachal Pradesh (PD- 123), Uttarakhand (PD- 189) and Assam (PD- 397).
+It seems that there is no major dependency of the population density on the total number of confirmed cases which results us to say that it is not a deciding factor in confirmed Covid-19 cases. Hence, confirmed cases do not depend on population density.</string>
+    <string name="cf_recovery_rate_literacy_rate">The top states in the recovery rate graph are Andaman Nicobar (86.27), Mizoram (91.58), Punjab (76.68), Tripura (87.75), and Ladakh (86.59). All the states except Punjab have a literacy rate of more than 85%.
+Also, the states with lower recovery rate are Bihar (63.82), Chhattisgarh (71.04) and Assam (73.18). They all have literacy rates below 75%.
+This in turn can allow us to say with 80% surety that the recovery rate depends on the literacy rate.</string>
+    <string name="cf_death_rate_literacy_rate">The top states in the death rate graph are West Bengal (77.08), Meghalaya (75.48), Gujarat (79.31), Madhya Pradesh (70.63), and Maharashtra (82.91). All the above mentioned states have a literacy rate below 80% except Maharashtra.
+Also, the states with lower death rates are Tamil Nadu (80.33), Kerala (93.91), Odisha (73.45), and Bihar (63.82). All the states except Bihar have a literacy rate of above 73%.
+This does not show any pattern being followed between death rate and literacy rate. Hence, we can say that the death rate does not depend on the literacy rate.</string>
+    <string name="cf_recovery_rate_climate">The top states in the recovery rate graph are Andaman Nicobar (26.0℃) Mizoram (20.6℃), Punjab (23.5℃), Tripura (24.6℃), and Ladakh (5.2℃). All the states except Ladakh have average temperatures ranging from 20℃ to 26℃.
+Also, the states with lower recovery rate are Manipur (25.5℃), Bihar (27.5℃), Chhattisgarh (26.8℃) and Assam (24.6℃), and Uttarakhand(23.6℃). These states also have the same range of temperatures.
+Hence, we can infer that the recovery rate does not depend on the climate of the place.</string>
+    <string name="cf_death_rate_climate">The states having higher death rates are West Bengal (24.8℃), Meghalaya (17.1℃), Gujarat (34.5℃), Madhya Pradesh (33℃), and Maharashtra (26℃). Their average temperature ranges from 24℃ to 34℃ except Meghalaya.
+Also, the states with lower death rates are Tamil Nadu (32℃), Kerala (25℃), Odisha (27.4℃), and Bihar (27.5℃). These states also have average temperatures ranging from 25℃ to 32℃. This does not show any observable pattern being followed.
+Hence, we can say that the death rate also does not depend on the climate.</string>
+    <string name="cf_recovery_rate_health">Since the states with higher recovery rates may have less population (so obviously less number of hospital beds), we will consider the states with a considerable population for the analysis.
+The states with higher population are Uttar Pradesh (58310 beds), Maharashtra(68998 beds), West Bengal (51163 beds), Madhya Pradesh (38140 beds) and Bihar (17796 beds). All of them have a recovery rate of around 50% but only Bihar has the least recovery rate among these states and also the least number of beds among these.
+We may infer from this that the recovery rate depends on the health facilities.</string>
+    <string name="cf_death_rate_health">We will again consider the above mentioned states for the analysis. The states with higher population are Uttar Pradesh (58310 beds), Maharashtra (68998 beds), West Bengal (51163 beds), Madhya Pradesh (38140 beds) and Bihar (17796 beds). Here, West Bengal, Madhya Pradesh, and Maharashtra  have high death rates but a good number of hospital beds. Also, Bihar having the least number of beds has the least death rate also.
+From this we can infer that the death rate does not depend on the health facilities.</string>
+
     <string name="description_placeholder">
         Graph description and analysis will go here
         Graph description and analysis will go here

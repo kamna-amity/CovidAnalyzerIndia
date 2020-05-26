@@ -9,8 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
@@ -18,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.covidanalyzerindia.util.CovidDataService;
-import com.example.covidanalyzerindia.util.JavaScriptFunctionService;
 
 import org.json.JSONArray;
 import org.json.JSONException;

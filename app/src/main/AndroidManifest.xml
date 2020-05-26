@@ -12,9 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ContributingFactorsLiteracyRateActivity"></activity>
-        <activity android:name=".ContributingFactorsPopulationActivity" />
-        <activity android:name=".ContributingFactorsPollutionActivity" />
+        <activity
+            android:name=".ContributingFactorsHealthFacilitiesActivity"
+            android:label="Health Facilities"/>
+        <activity
+            android:name=".ContributingFactorsClimateActivity"
+            android:label="Climate"/>
+        <activity
+            android:name=".ContributingFactorsLiteracyRateActivity"
+            android:label="Literacy Rate"/>
+        <activity
+            android:name=".ContributingFactorsPopulationActivity"
+            android:label="Population Density"/>
+        <activity
+            android:name=".ContributingFactorsPollutionActivity"
+            android:label="Pollution"/>
         <activity
             android:name=".ContributingFactorsActivity"
             android:label="Contributing Factors" />

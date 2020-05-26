@@ -20,9 +20,39 @@
 
             function displayChart(graphType, graphLabel1, graphLabel2, graphBackgroundColor1, graphBackgroundColor2, graphBorderColor1,  graphBorderColor2, graphX, graphY1, graphY2, aspectRatio){
 
-                var graphXData = graphX.split(",");
-                var graphY1Data= graphY1.split(",").map((e)=>parseFloat(e));
-                var graphY2Data= graphY2.split(",").map((e)=>parseFloat(e));
+                //var graphXData = graphX.split(",");
+                //var graphY1Data= graphY1.split(",").map((e)=>parseFloat(e));
+                //var graphY2Data= graphY2.split(",").map((e)=>parseFloat(e));
+
+                var graphXData = [];
+                var graphY1Data = [];
+                var graphY2Data = [];
+                var graphXDataUnsorted = graphX.split(",");
+                var graphY1DataUnsorted= graphY1.split(",").map((e)=>parseFloat(e));
+                var graphY2DataUnsorted= graphY2.split(",").map((e)=>parseFloat(e));
+
+                // for sorting : start
+                combinedArrayUnsorted = graphXDataUnsorted.map(function(d, i) {
+                      return {
+                        label: d,
+                        data1: graphY1DataUnsorted[i] || 0,
+                        data2: graphY2DataUnsorted[i] || 0
+                      };
+                });
+
+                combinedArraySorted = combinedArrayUnsorted.sort(function(a, b) {
+                      return b.data1 - a.data1;
+                });
+
+                combinedArraySorted.forEach(function(d){
+                        if (d.data1 != -1){
+                            graphXData.push(d.label);
+                            graphY1Data.push(d.data1);
+                            graphY2Data.push(d.data2);
+                        }
+                });
+
+                // for sorting : end
 
                 var ctx = document.getElementById('myChart').getContext('2d');
                 window.myLine = Chart.Line(ctx, {

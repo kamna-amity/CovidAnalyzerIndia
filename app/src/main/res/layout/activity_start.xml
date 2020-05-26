@@ -31,6 +31,15 @@
         android:textAlignment="center"
         android:textSize="30sp"/>
 
+    <TextView
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Summer Internship Project\n\nKamna Srivastava\nAmity Institute of Information Technology\nNoida"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
+
 
     <Button
         android:layout_weight="1"

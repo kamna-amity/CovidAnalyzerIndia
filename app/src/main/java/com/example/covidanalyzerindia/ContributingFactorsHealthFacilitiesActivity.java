@@ -27,19 +27,21 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import static com.example.covidanalyzerindia.util.ApplicationConstants.CONFIRMED_COLOR;
 import static com.example.covidanalyzerindia.util.ApplicationConstants.CONTRIBUTING_FACTOR_COLOR;
 import static com.example.covidanalyzerindia.util.ApplicationConstants.DECEASED_COLOR;
 import static com.example.covidanalyzerindia.util.ApplicationConstants.RECOVERED_COLOR;
 
-public class ContributingFactorsPopulationActivity extends AppCompatActivity {
+public class ContributingFactorsHealthFacilitiesActivity extends AppCompatActivity {
 
     private static final String LOCAL_RESOURCE = "file:///android_asset/multiAxisLineGraph.html";
     private static final String GRAPH_TYPE = "line";
-    private static final String GRAPH_LABEL_POPULATION = "Population Density";
-    private static final String GRAPH_LABEL_DEATH_RATE = "# Confirmed Cases";
-    private static final String GRAPH_BACKGROUND_COLOR_DECEASED = CONFIRMED_COLOR;
-    private static final String GRAPH_BORDER_COLOR_DECEASED = CONFIRMED_COLOR;
+    private static final String GRAPH_LABEL = "No. of Hospital Beds";
+    private static final String GRAPH_LABEL_DEATH_RATE = "# Death Rate";
+    private static final String GRAPH_BACKGROUND_COLOR_DECEASED = DECEASED_COLOR;
+    private static final String GRAPH_BORDER_COLOR_DECEASED = DECEASED_COLOR;
+    private static final String GRAPH_LABEL_RECOVERY_RATE = "# Recovery Rate";
+    private static final String GRAPH_BACKGROUND_COLOR_RECOVERED = RECOVERED_COLOR;
+    private static final String GRAPH_BORDER_COLOR_RECOVERED = RECOVERED_COLOR;
     private static final String GRAPH_BACKGROUND_COLOR_FACTOR = CONTRIBUTING_FACTOR_COLOR;
     private static final String GRAPH_BORDER_COLOR__FACTOR = CONTRIBUTING_FACTOR_COLOR;
     private static final String GRAPH_ASPECT_RATIO = "1.5";
@@ -47,7 +49,7 @@ public class ContributingFactorsPopulationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contributing_factors_population);
+        setContentView(R.layout.activity_contributing_factors_health_facilities);
         if (getSupportActionBar() != null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,7 +71,7 @@ public class ContributingFactorsPopulationActivity extends AppCompatActivity {
 
     private class AsyncCovidDataApiTask extends AsyncTask<String, String, CovidDataService> {
 
-        private final String TAG = ContributingFactorsPopulationActivity.AsyncCovidDataApiTask.class.getSimpleName();
+        private final String TAG = ContributingFactorsHealthFacilitiesActivity.AsyncCovidDataApiTask.class.getSimpleName();
 
         @Override
         protected void onPreExecute() {
@@ -116,26 +118,37 @@ public class ContributingFactorsPopulationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(CovidDataService covidDataService) {
             super.onPostExecute(covidDataService);
-            StateInformationService stateInformationService = new StateInformationService(ContributingFactorsPopulationActivity.this);
+            StateInformationService stateInformationService = new StateInformationService(ContributingFactorsHealthFacilitiesActivity.this);
 
             if (covidDataService != null) {
                 try {
                     final String graphX = covidDataService.getStatesForContributingFactorsString();
-                    final String graphY1 = covidDataService.getStateWiseCasesConfirmedCasesString();
-                    final String graphY2 = stateInformationService.getPopulationDataString(graphX);// change here for pollution
+                    final String graphY1 = covidDataService.getStateWiseDeathRateString();
+                    final String graphY2 = stateInformationService.getHealthFacilitiesDataString(graphX);// change here for pollution
 
-
-                    WebView myWebView = findViewById(R.id.confirmedCasesPopulationWebView);
+                    WebView myWebView = findViewById(R.id.confirmedCasesHealthFacilitiesWebView);
                     myWebView.getSettings().setJavaScriptEnabled(true);
                     myWebView.loadUrl(LOCAL_RESOURCE);
                     myWebView.setWebViewClient(new WebViewClient() {
                         public void onPageFinished(WebView view, String url) {
                             JavaScriptFunctionService javaScriptFunctionService = new JavaScriptFunctionService();
-                            String javaScriptFunctionCall = javaScriptFunctionService.getJavaScriptFunctionCall(GRAPH_TYPE,GRAPH_LABEL_DEATH_RATE,GRAPH_LABEL_POPULATION,GRAPH_BACKGROUND_COLOR_DECEASED,GRAPH_BACKGROUND_COLOR_FACTOR,GRAPH_BORDER_COLOR_DECEASED,GRAPH_BORDER_COLOR__FACTOR,graphX,graphY1,graphY2,GRAPH_ASPECT_RATIO);
+                            String javaScriptFunctionCall = javaScriptFunctionService.getJavaScriptFunctionCall(GRAPH_TYPE,GRAPH_LABEL_DEATH_RATE,GRAPH_LABEL,GRAPH_BACKGROUND_COLOR_DECEASED,GRAPH_BACKGROUND_COLOR_FACTOR,GRAPH_BORDER_COLOR_DECEASED,GRAPH_BORDER_COLOR__FACTOR,graphX,graphY1,graphY2,GRAPH_ASPECT_RATIO);
                             view.loadUrl(javaScriptFunctionCall);
                         }
                     });
 
+                    // Recovered Cases
+                    final String graphY3 = covidDataService.getStateWiseRecoveryRateString();
+                    WebView myWebView2 = findViewById(R.id.recoveredCasesHealthFacilitiesWebView);
+                    myWebView2.getSettings().setJavaScriptEnabled(true);
+                    myWebView2.loadUrl(LOCAL_RESOURCE);
+                    myWebView2.setWebViewClient(new WebViewClient() {
+                        public void onPageFinished(WebView view, String url) {
+                            JavaScriptFunctionService javaScriptFunctionService = new JavaScriptFunctionService();
+                            String javaScriptFunctionCall = javaScriptFunctionService.getJavaScriptFunctionCall(GRAPH_TYPE,GRAPH_LABEL_RECOVERY_RATE,GRAPH_LABEL,GRAPH_BACKGROUND_COLOR_RECOVERED,GRAPH_BACKGROUND_COLOR_FACTOR,GRAPH_BORDER_COLOR_RECOVERED,GRAPH_BORDER_COLOR__FACTOR,graphX,graphY3,graphY2,GRAPH_ASPECT_RATIO);
+                            view.loadUrl(javaScriptFunctionCall);
+                        }
+                    });
                 }
                 catch (JSONException e){
                     Log.e(TAG, "Json parsing error: " + e.getMessage());

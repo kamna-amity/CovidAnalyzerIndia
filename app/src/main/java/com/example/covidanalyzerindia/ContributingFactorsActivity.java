@@ -37,4 +37,14 @@ public class ContributingFactorsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ContributingFactorsLiteracyRateActivity.class);
         startActivity(intent);
     }
+
+    public void startClimateActivity(View view) {
+        Intent intent = new Intent(this, ContributingFactorsClimateActivity.class);
+        startActivity(intent);
+    }
+
+    public void startHealthFacilitiesActivity(View view) {
+        Intent intent = new Intent(this, ContributingFactorsHealthFacilitiesActivity.class);
+        startActivity(intent);
+    }
 }

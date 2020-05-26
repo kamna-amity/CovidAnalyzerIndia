@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Confirmed Cases and Population Density Graph"
+            android:text="Recovery Rate and Hospital Beds Graph"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textAlignment="center"
@@ -22,7 +22,7 @@
             android:layout_marginTop="15dp"/>
 
         <WebView
-            android:id="@+id/confirmedCasesPopulationWebView"
+            android:id="@+id/recoveredCasesHealthFacilitiesWebView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -38,7 +38,40 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cf_confirmed_cases_population"
+            android:text="@string/cf_recovery_rate_health"
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Death Rate and Hospital Beds Graph"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"/>
+
+        <WebView
+            android:id="@+id/confirmedCasesHealthFacilitiesWebView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Graph Analysis"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cf_death_rate_health"
             android:textStyle="normal"
             android:textSize="15sp"
             android:layout_marginTop="5dp"/>

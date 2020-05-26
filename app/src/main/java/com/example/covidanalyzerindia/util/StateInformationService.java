@@ -19,6 +19,8 @@ public class StateInformationService {
     private static HashMap<String,String> POLLUTION = new HashMap<String,String>();
     private static HashMap<String,String> POPULATION = new HashMap<String,String>();
     private static HashMap<String,String> LITERACY_RATE = new HashMap<String,String>();
+    private static HashMap<String,String> CLIMATE = new HashMap<String,String>();
+    private static HashMap<String,String> HEALTH_FACILITIES = new HashMap<String,String>();
 
     public StateInformationService(Context context) {
         this.context = context;
@@ -72,6 +74,38 @@ public class StateInformationService {
         return convertToString(dataList);
     }
 
+    public String getClimateDataString(String stateList) {
+        String[] states = stateList.split(",");
+        HashMap<String,String> data = getClimateData();
+        List<String> dataList= new ArrayList<String>();
+        for(int i=0;i<states.length;i++){
+            if (data.containsKey(states[i])){
+                dataList.add(data.get(states[i]));
+            }
+            else{
+                System.out.println("======== State not found : "+states[i]);
+                dataList.add("0");
+            }
+        }
+        return convertToString(dataList);
+    }
+
+    public String getHealthFacilitiesDataString(String stateList) {
+        String[] states = stateList.split(",");
+        HashMap<String,String> data = getHealthFacilitiesData();
+        List<String> dataList= new ArrayList<String>();
+        for(int i=0;i<states.length;i++){
+            if (data.containsKey(states[i])){
+                dataList.add(data.get(states[i]));
+            }
+            else{
+                System.out.println("======== State not found : "+states[i]);
+                dataList.add("0");
+            }
+        }
+        return convertToString(dataList);
+    }
+
     public HashMap<String,String> getPollutionData() {
         if (POLLUTION.size() != 0){ // reads only once. If data is already there, just return
             return POLLUTION;
@@ -96,6 +130,22 @@ public class StateInformationService {
         return LITERACY_RATE;
     }
 
+    public HashMap<String,String> getClimateData()  {
+        if (CLIMATE.size() != 0){ // reads only once. If data is already there, just return
+            return CLIMATE;
+        }
+        readAndFillData();
+        return CLIMATE;
+    }
+
+    public HashMap<String,String> getHealthFacilitiesData()  {
+        if (HEALTH_FACILITIES.size() != 0){ // reads only once. If data is already there, just return
+            return HEALTH_FACILITIES;
+        }
+        readAndFillData();
+        return HEALTH_FACILITIES;
+    }
+
     private void readAndFillData(){
         String line="";
         try{
@@ -106,9 +156,12 @@ public class StateInformationService {
             while ((line = br.readLine()) != null)   //returns a Boolean value
             {
                 String[] stateData = line.split(",");
+                System.out.println(" STATE DATA : "+stateData);
                 POLLUTION.put(stateData[0],stateData[2]);
                 POPULATION.put(stateData[0],stateData[1]);
                 LITERACY_RATE.put(stateData[0],stateData[3]);
+                CLIMATE.put(stateData[0],stateData[4]);
+                HEALTH_FACILITIES.put(stateData[0],stateData[5]);
             }
         }
         catch (IOException e){

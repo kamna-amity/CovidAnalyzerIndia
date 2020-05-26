@@ -13,4 +13,5 @@
     <color name="colorActiveHighlight">#A3D6FF</color>
     <color name="colorRecoveredHighlight">#CDFFCF</color>
     <color name="colorDeceasedHighlight">#E3E3E3</color>
+    <color name="colorOrange">#FB6131</color>
 </resources>
