@@ -108,7 +108,7 @@ public class CovidDataService implements Serializable {
         ArrayList<String> caseTimeSeriesDailyActiveCases = new ArrayList<>();
         for (int i=0; i<caseTimeSeries.length(); i++){
             JSONObject caseTimeSeriesJson = (JSONObject) caseTimeSeries.get(i);
-            int active_cases = Integer.parseInt(caseTimeSeriesJson.getString("dailyconfirmed")) - Integer.parseInt(caseTimeSeriesJson.getString("dailyrecovered"));
+            int active_cases = Integer.parseInt(caseTimeSeriesJson.getString("dailyconfirmed")) - Integer.parseInt(caseTimeSeriesJson.getString("dailyrecovered")) - Integer.parseInt(caseTimeSeriesJson.getString("dailydeceased"));
             caseTimeSeriesDailyActiveCases.add(Integer.toString(active_cases));
         }
         return caseTimeSeriesDailyActiveCases;
@@ -196,8 +196,8 @@ public class CovidDataService implements Serializable {
             String stateName = stateWiseJson.getString("state");
             String confirmedCases = stateWiseJson.getString("confirmed");
             String recoveredCases = stateWiseJson.getString("recovered");
-            String activeCases = String.valueOf(Integer.parseInt(confirmedCases)-Integer.valueOf(recoveredCases));
             String deceasedCases = stateWiseJson.getString("deaths");
+            String activeCases = String.valueOf(Integer.parseInt(confirmedCases)-Integer.parseInt(recoveredCases)-Integer.parseInt(deceasedCases));
 
             if (stateName.equalsIgnoreCase("Andaman and Nicobar Islands")){
                 stateName = "Andaman Nicobar";
